@@ -1,0 +1,26 @@
+version: "3.5"
+services:
+  validator-ejector:
+    build:
+      context: validator-ejector
+      args:
+        EJECTOR_VERSION: 1.5.0
+    environment:
+      VE_OPERATOR_ID: ""
+    restart: on-failure
+    volumes: validator-ejector:/exitmessages
+
+  lido-dv-exit:
+    build:
+      context: lido-dvt-exit
+      args:
+        DV_EXIT_VERSION: e8bee1f
+        LIDO_DV_EXIT_LOG_LEVEL: info
+        LIDO_DV_EXIT_VALIDATOR_QUERY_CHUNK_SIZE: 5
+    environment:
+
+    restart: on-failure
+    volumes:
+      - validator-ejector:/exitmessages
+volumes:
+  validator-ejector: {}
