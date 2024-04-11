@@ -1,11 +1,11 @@
 ARG LIDO_DV_EXIT_VERSION
+ARG NETWORK
+
 FROM obolnetwork/lido-dv-exit:${LIDO_DV_EXIT_VERSION}
 
-# TODO: How to avoid sharing volumes with charon?
+ENV NETWORK=${NETWORK}
 
-ENV LIDODVEXIT_CHARON_RUNTIME_DIR=/charon \
-    LIDODVEXIT_EJECTOR_EXIT_PATH=/exitmessages \
-    NETWORK=holesky
+RUN mkdir -p /opt/charon/.charon
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 

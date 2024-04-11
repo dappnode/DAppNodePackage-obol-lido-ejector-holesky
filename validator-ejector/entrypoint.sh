@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# If VE_OPERATOR_ID is not defined or is not a number, exit 0 to avoid restart, telling the user to set the correct value
+if [ -z "$VE_OPERATOR_ID" ] || ! [[ "$VE_OPERATOR_ID" =~ ^[0-9]+$ ]]; then
+      echo "VE_OPERATOR_ID is not defined or is not a number. Please set the correct value in the config tab."
+      exit 0
+fi
+
+if [ -z "$CHARON_TO_EXIT_NUMBER" ] || ! [[ "$CHARON_TO_EXIT_NUMBER" =~ ^[0-9]+$ ]]; then
+      echo "CHARON_TO_EXIT_NUMBER is not defined or is not a number. Please set the correct value in the config tab."
+      exit 0
+fi
+
+export MESSAGES_LOCATION="/exitmessages/charon${CHARON_TO_EXIT_NUMBER}"
+
 echo "[INFO] Loading ${NETWORK} settings..."
 
 case $NETWORK in

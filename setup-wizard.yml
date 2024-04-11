@@ -1,0 +1,11 @@
+version: "2"
+fields:
+  - id: charon-to-exit-number
+    target:
+      type: environment
+      name: CHARON_TO_EXIT_NUMBER
+      service: [lido-dv-exit, validator-ejector]
+    title: Charon to Exit Number
+    description: |-
+      There are several charon instances in the Obol package. Set the number of the instance that will be connected to the Lido validator ejector.
+    pattern: ^[0-9]+$

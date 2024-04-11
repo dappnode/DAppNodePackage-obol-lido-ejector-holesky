@@ -8,7 +8,7 @@
   "description": "Lido validator ejector for Holesky",
   "type": "service",
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
-  "categories": ["ETH2.0"],
+  "categories": ["ETH2.0", "Lido", "DVT"],
   "links": {
     "homepage": "https://obol.tech/"
   },
@@ -30,5 +30,12 @@
   },
   "bugs": {
     "url": "https://github.com/dappnode/DAppNodePackage-obol-lido-ejector-holesky/issues"
-  }
+  },
+  "backup": [
+    {
+      "path": "/charon",
+      "name": "charons",
+      "service": "lido-dv-exit"
+    }
+  ]
 }

@@ -1,5 +1,18 @@
 #!/bin/bash
 
+if [ -z "$CHARON_TO_EXIT_NUMBER" ] || ! [[ "$CHARON_TO_EXIT_NUMBER" =~ ^[0-9]+$ ]]; then
+    echo "CHARON_TO_EXIT_NUMBER is not defined or is not a number. Please set the correct value in the config tab."
+    exit 0
+fi
+
+export LIDODVEXIT_CHARON_RUNTIME_DIR=/charon/charon${CHARON_TO_EXIT_NUMBER} \
+    LIDODVEXIT_EJECTOR_EXIT_PATH=/exitmessages/charon${CHARON_TO_EXIT_NUMBER}
+
+if [ -z "$LIDODVEXIT_CHARON_RUNTIME_DIR" ] || [ ! -d "$LIDODVEXIT_CHARON_RUNTIME_DIR" ]; then
+    echo "Charon directory is empty or does not exist. Please upload the Obol backup to this package."
+    exit 0
+fi
+
 echo "[INFO] Loading ${NETWORK} settings..."
 
 case $NETWORK in
