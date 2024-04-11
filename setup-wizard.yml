@@ -9,3 +9,12 @@ fields:
     description: |-
       There are several charon instances in the Obol package. Set the number of the instance that will be connected to the Lido validator ejector.
     pattern: ^[0-9]+$
+  - id: operator-id
+    target:
+      type: environment
+      name: VE_OPERATOR_ID
+      service: [validator-ejector]
+    title: Lido Operator ID
+    description: |-
+      Lido operator ID for the validator ejector.
+    pattern: ^[0-9]+$
