@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$CHARON_TO_EXIT_NUMBER" ] || ! [[ "$CHARON_TO_EXIT_NUMBER" =~ ^[0-9]+$ ]]; then
-    echo "CHARON_TO_EXIT_NUMBER is not defined or is not a number. Please set the correct value in the config tab."
+    echo "[ERROR] CHARON_TO_EXIT_NUMBER is not defined or is not a number. Please set the correct value in the config tab."
     exit 0
 fi
 
@@ -9,7 +9,8 @@ export LIDODVEXIT_CHARON_RUNTIME_DIR=/charon/charon${CHARON_TO_EXIT_NUMBER} \
     LIDODVEXIT_EJECTOR_EXIT_PATH=/exitmessages/charon${CHARON_TO_EXIT_NUMBER}
 
 if [ -z "$LIDODVEXIT_CHARON_RUNTIME_DIR" ] || [ ! -d "$LIDODVEXIT_CHARON_RUNTIME_DIR" ]; then
-    echo "Charon directory is empty or does not exist. Please upload the Obol backup to this package."
+    echo "[ERROR] Charon directory is empty or does not exist. Please upload the Obol backup to this package."
+    sleep 1h
     exit 0
 fi
 
@@ -36,7 +37,7 @@ case $NETWORK in
         _BEACON_NODE_API="http://beacon-chain.lodestar.dappnode:3500"
         ;;
     *)
-        echo "Unknown value or unsupported for _DAPPNODE_GLOBAL_CONSENSUS_CLIENT_MAINNET Please confirm that the value is correct"
+        echo "[ERROR] Unknown value or unsupported for _DAPPNODE_GLOBAL_CONSENSUS_CLIENT_MAINNET Please confirm that the value is correct"
         exit 1
         ;;
     esac
@@ -62,14 +63,14 @@ case $NETWORK in
         _BEACON_NODE_API="http://beacon-chain.lodestar-holesky.dappnode:3500"
         ;;
     *)
-        echo "Unknown value or unsupported for _DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY Please confirm that the value is correct"
+        echo "[ERROR] Unknown value or unsupported for _DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY Please confirm that the value is correct"
         exit 1
         ;;
     esac
 
     ;;
 *)
-    echo "Unknown value or unsupported for NETWORK Please confirm that the value is correct"
+    echo "[ERROR] Unknown value or unsupported for NETWORK Please confirm that the value is correct"
     exit 1
     ;;
 esac
