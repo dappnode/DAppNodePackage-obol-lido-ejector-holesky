@@ -10,11 +10,12 @@ services:
     environment:
       VE_OPERATOR_ID: ""
     restart: on-failure
-    volumes: validator-ejector:/exitmessages
-
+    volumes:
+      - validator-ejector:/exitmessages
+    image: validator-ejector.obol-lido-ejector-holesky.dnp.dappnode.eth:0.1.0
   lido-dv-exit:
     build:
-      context: lido-dvt-exit
+      context: lido-dv-exit
       args:
         DV_EXIT_VERSION: e8bee1f
         NETWORK: holesky
@@ -25,5 +26,6 @@ services:
     restart: on-failure
     volumes:
       - validator-ejector:/exitmessages
+    image: lido-dv-exit.obol-lido-ejector-holesky.dnp.dappnode.eth:0.1.0
 volumes:
   validator-ejector: {}
