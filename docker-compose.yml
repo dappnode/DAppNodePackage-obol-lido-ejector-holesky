@@ -4,11 +4,11 @@ services:
     build:
       context: validator-ejector
       args:
-        EJECTOR_VERSION: 1.5.0
+        VALIDATOR_EJECTOR_VERSION: 1.5.0
         NETWORK: holesky
-        CHARON_TO_EXIT_NUMBER: 1
     environment:
       VE_OPERATOR_ID: ""
+      CHARON_TO_EXIT_NUMBER: 1
     restart: on-failure
     volumes:
       - validator-ejector:/exitmessages
@@ -17,7 +17,7 @@ services:
     build:
       context: lido-dv-exit
       args:
-        DV_EXIT_VERSION: e8bee1f
+        LIDO_DV_EXIT_VERSION: e8bee1f
         NETWORK: holesky
     environment:
       LIDO_DV_EXIT_LOG_LEVEL: info

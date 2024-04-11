@@ -33,8 +33,28 @@
   },
   "backup": [
     {
-      "path": "/charon",
-      "name": "charons",
+      "path": "/charon/charon1",
+      "name": "charon1",
+      "service": "lido-dv-exit"
+    },
+    {
+      "path": "/charon/charon2",
+      "name": "charon2",
+      "service": "lido-dv-exit"
+    },
+    {
+      "path": "/charon/charon3",
+      "name": "charon3",
+      "service": "lido-dv-exit"
+    },
+    {
+      "path": "/charon/charon4",
+      "name": "charon4",
+      "service": "lido-dv-exit"
+    },
+    {
+      "path": "/charon/charon5",
+      "name": "charon5",
       "service": "lido-dv-exit"
     }
   ]

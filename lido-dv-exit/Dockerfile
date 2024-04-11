@@ -5,6 +5,8 @@ FROM obolnetwork/lido-dv-exit:${LIDO_DV_EXIT_VERSION}
 
 ENV NETWORK=${NETWORK}
 
+USER root
+
 RUN mkdir -p /opt/charon/.charon
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
