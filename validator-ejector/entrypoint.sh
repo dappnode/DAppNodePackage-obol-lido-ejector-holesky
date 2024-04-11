@@ -2,12 +2,12 @@
 
 # If VE_OPERATOR_ID is not defined or is not a number, exit 0 to avoid restart, telling the user to set the correct value
 if [ -z "$VE_OPERATOR_ID" ] || ! echo "$VE_OPERATOR_ID" | grep -qE '^[0-9]+$'; then
-      echo "VE_OPERATOR_ID is not defined or is not a number. Please set the correct value in the config tab."
+      echo "[ERROR] VE_OPERATOR_ID is not defined or is not a number. Please set the correct value in the config tab."
       exit 0
 fi
 
 if [ -z "$CHARON_TO_EXIT_NUMBER" ] || ! echo "$CHARON_TO_EXIT_NUMBER" | grep -qE '^[0-9]+$'; then
-      echo "CHARON_TO_EXIT_NUMBER is not defined or is not a number. Please set the correct value in the config tab."
+      echo "[ERROR] CHARON_TO_EXIT_NUMBER is not defined or is not a number. Please set the correct value in the config tab."
       exit 0
 fi
 
@@ -57,7 +57,7 @@ case $NETWORK in
             _BEACON_NODE_API="http://beacon-chain.lodestar.dappnode:3500"
             ;;
       *)
-            echo "Unknown value or unsupported for _DAPPNODE_GLOBAL_CONSENSUS_CLIENT_MAINNET Please confirm that the value is correct"
+            echo "[ERROR] Unknown value or unsupported for _DAPPNODE_GLOBAL_CONSENSUS_CLIENT_MAINNET Please confirm that the value is correct"
             exit 1
             ;;
       esac
@@ -113,7 +113,7 @@ case $NETWORK in
 
       ;;
 *)
-      echo "Unknown value or unsupported for NETWORK Please confirm that the value is correct"
+      echo "[ERROR] Unknown value or unsupported for NETWORK Please confirm that the value is correct"
       exit 1
       ;;
 esac
