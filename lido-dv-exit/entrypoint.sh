@@ -5,11 +5,14 @@ if [ -z "$CHARON_TO_EXIT_NUMBER" ] || ! [[ "$CHARON_TO_EXIT_NUMBER" =~ ^[0-9]+$ 
     exit 0
 fi
 
-export LIDODVEXIT_CHARON_RUNTIME_DIR=/charon/charon${CHARON_TO_EXIT_NUMBER} \
-    LIDODVEXIT_EJECTOR_EXIT_PATH=/exitmessages/charon${CHARON_TO_EXIT_NUMBER}
+CHARON_DIR=/charon/charon${CHARON_TO_EXIT_NUMBER}
+EXIT_PATH=/exitmessages/charon${CHARON_TO_EXIT_NUMBER}
 
-if [ -z "$LIDODVEXIT_CHARON_RUNTIME_DIR" ] || [ ! -d "$LIDODVEXIT_CHARON_RUNTIME_DIR" ]; then
+mkdir -p $EXIT_PATH
+
+if [ -z "$ CHARON_DIR" ] || [ ! -d "$CHARON_DIR" ]; then
     echo "[ERROR] Charon directory is empty or does not exist. Please upload the Obol backup to this package."
+    echo "[INFO] This service will be running for 1h to allow you to upload the backup."
     sleep 1h
     exit 0
 fi
@@ -18,7 +21,7 @@ echo "[INFO] Loading ${NETWORK} settings..."
 
 case $NETWORK in
 "mainnet")
-    export LIDODVEXIT_EXIT_EPOCH=194048
+    EXIT_EPOCH=194048
 
     case "$_DAPPNODE_GLOBAL_CONSENSUS_CLIENT_MAINNET" in
     "prysm.dnp.dappnode.eth")
@@ -44,7 +47,7 @@ case $NETWORK in
 
     ;;
 "holesky")
-    export LIDODVEXIT_EXIT_EPOCH=256
+    EXIT_EPOCH=256
 
     case "$_DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY" in
     "prysm-holesky.dnp.dappnode.eth")
@@ -75,7 +78,11 @@ case $NETWORK in
     ;;
 esac
 
-export LIDODVEXIT_BEACON_NODE_URL=${_BEACON_NODE_API}
-
 echo "[INFO] Starting Lido DV Exit..."
-exec /usr/local/bin/lido-dv-exit run
+exec /usr/local/bin/lido-dv-exit run \
+    --beacon-node-url ${_BEACON_NODE_API} \
+    --charon-runtime-dir ${CHARON_DIR} \
+    --ejector-exit-path ${EXIT_PATH} \
+    --exit-epoch ${EXIT_EPOCH} \
+    --log-level ${LOG_LEVEL} \
+    --validator-query-chunk-size ${VALIDATOR_QUERY_CHUNK_SIZE}

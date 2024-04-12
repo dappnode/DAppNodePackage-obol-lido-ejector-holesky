@@ -7,7 +7,7 @@ services:
         VALIDATOR_EJECTOR_VERSION: 1.5.0
         NETWORK: holesky
     environment:
-      VE_OPERATOR_ID: ""
+      OPERATOR_ID: ""
       CHARON_TO_EXIT_NUMBER: 1
     restart: on-failure
     volumes:
@@ -20,12 +20,14 @@ services:
         LIDO_DV_EXIT_VERSION: e8bee1f
         NETWORK: holesky
     environment:
-      LIDO_DV_EXIT_LOG_LEVEL: info
-      LIDO_DV_EXIT_VALIDATOR_QUERY_CHUNK_SIZE: 5
+      LOG_LEVEL: info
+      VALIDATOR_QUERY_CHUNK_SIZE: 5
       CHARON_TO_EXIT_NUMBER: 1
     restart: on-failure
     volumes:
       - validator-ejector:/exitmessages
+      - charon-data:/charon
     image: lido-dv-exit.obol-lido-ejector-holesky.dnp.dappnode.eth:0.1.0
 volumes:
   validator-ejector: {}
+  charon-data: {}

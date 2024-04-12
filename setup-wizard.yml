@@ -12,7 +12,7 @@ fields:
   - id: operator-id
     target:
       type: environment
-      name: VE_OPERATOR_ID
+      name: OPERATOR_ID
       service: [validator-ejector]
     title: Lido Operator ID
     description: |-
