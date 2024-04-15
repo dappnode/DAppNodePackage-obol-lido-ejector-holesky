@@ -17,7 +17,7 @@ services:
     build:
       context: lido-dv-exit
       args:
-        LIDO_DV_EXIT_VERSION: e8bee1f
+        LIDO_DV_EXIT_VERSION: v0.1.0
         NETWORK: holesky
     environment:
       LOG_LEVEL: info
