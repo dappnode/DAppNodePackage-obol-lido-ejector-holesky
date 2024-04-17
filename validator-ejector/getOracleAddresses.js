@@ -8,7 +8,6 @@ dotenv.config();
 const executionNode = process.env.EXECUTION_NODE;
 const hashConsensusContract = process.env.HASH_CONSENSUS_CONTRACT;
 const oracleListFilePath = process.env.ORACLE_LIST_FILE_PATH;
-const defaultOracles = process.env.DEFAULT_ORACLE_ADDRESSES_ALLOWLIST;
 // The format is:
 // '["0x12A1D74F8697b9f4F1eEBb0a9d0FB6a751366399","0xD892c09b556b547c80B7d8c8cB8d75bf541B2284","0xf7aE520e99ed3C41180B5E12681d31Aa7302E4e5"]'
 
@@ -48,7 +47,6 @@ async function getMembers() {
   } catch (error) {
     console.error("[ERROR] Could not fetch allowed oracles:", error);
     console.log("[INFO] Using default oracle addresses...");
-    fs.writeFileSync(oracleListFilePath, JSON.stringify(defaultOracles));
   }
 }
 
