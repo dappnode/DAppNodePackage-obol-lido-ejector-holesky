@@ -125,7 +125,8 @@ export EXECUTION_NODE=${_EXECUTION_NODE_API}
 export CONSENSUS_NODE=${_BEACON_NODE_API}
 
 # Run the script to retrieve the oracle list from the contract (written to the file $ORACLE_LIST_FILE_PATH)
-node ${ORACLE_LIST_RETRIEVER_PATH}
+# Skip error as the default list is already written to the file
+node ${ORACLE_LIST_RETRIEVER_PATH} || true
 
 export ORACLE_ADDRESSES_ALLOWLIST=$(cat $ORACLE_LIST_FILE_PATH)
 
