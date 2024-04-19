@@ -4,7 +4,7 @@ services:
     build:
       context: validator-ejector
       args:
-        EJECTOR_VERSION: 1.5.0
+        EJECTOR_VERSION: 1.6.0
         NETWORK: holesky
     environment:
       OPERATOR_ID: ""
