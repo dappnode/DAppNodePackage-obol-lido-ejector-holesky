@@ -2,7 +2,7 @@
   "name": "obol-lido-ejector-holesky.dnp.dappnode.eth",
   "version": "0.1.0",
   "upstreamArg": ["DV_EXIT_VERSION", "EJECTOR_VERSION"],
-  "upstreamVersion": ["v0.1.0", "1.5.0"],
+  "upstreamVersion": "1.6.0",
   "upstreamRepo": ["ObolNetwork/lido-dv-exit", "lidofinance/validator-ejector"],
   "shortDescription": "Lido validator ejector for Holesky",
   "description": "Lido validator ejector for Holesky",
