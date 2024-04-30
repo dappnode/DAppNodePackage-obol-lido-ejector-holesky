@@ -17,7 +17,7 @@
   "description": "Lido validator ejector for Holesky",
   "type": "service",
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
-  "categories": ["ETH2.0"],
+  "categories": ["ETH2.0", "Lido"],
   "links": {
     "homepage": "https://obol.tech/"
   },
